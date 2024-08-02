@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 style="text-align: center">Restaurant Booking Form</h1>
+    <form action="">
+      <table border="1" align="center">
+        <tr>
+          <td><label for="">Choice Of Booking:</label></td>
+          <td>
+            <select
+              name="bookingchoice"
+              id="bookingchoice"
+              style="width: 100%"
+              onchange="updateForm(this.value)"
+            >
+              <option value="Fullday">Fullday Booking</option>
+              <option value="Halfday">Halfday Booking</option>
+              <option value="Hourly">Hourly Booking</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="">UserName:</label></td>
+          <td><input type="text" id="username" required /></td>
+        </tr>
+        <tr>
+          <td><label for=""> MobileNumber :</label></td>
+          <td><input type="text" id="number" maxlength="10" required /></td>
+        </tr>
+        <tr>
+          <td><label for=""> Email Address:</label></td>
+          <td><input type="email" required /></td>
+        </tr>
+        <tr>
+          <td><label for="">No of Persons :</label></td>
+          <td><input type="number" required /></td>
+        </tr>
+
+        <tr id="datecontainer" class="hidden">
+          <td><label for=""> Date </label></td>
+          <td><input type="date" style="width: 98%" required /></td>
+        </tr>
+
+        <tr id="timecontainer" class="hidden">
+          <td><label for=""> Time </label></td>
+          <td><input type="time" style="width: 98%" required /></td>
+        </tr>
+
+        <tr id="slotcontainer" class="hidden">
+          <td><label for="">Slot:</label></td>
+          <td>
+            <select name="bookingchoice" id="bookingchoice" style="width: 100%">
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+  <script>
+    let updateForm = (Choice) => {
+      const date = document.querySelector("#datecontainer");
+      const time = document.querySelector("#timecontainer");
+      const slot = document.querySelector("#slotcontainer");
+
+      if (Choice === "Fullday") {
+        date.style.display = "block";
+        slot.style.display = "none";
+        time.style.display = "none";
+      } else if (Choice === "Halfday") {
+        date.style.display = "block";
+        slot.style.display = "block";
+        time.style.display = "none";
+      } else if (Choice === "Hourly") {
+        date.style.display = "block";
+        slot.style.display = "none";
+        time.style.display = "block";
+      }
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+      const bookingChoice = document.getElementById("bookingChoice");
+      updateForm(bookingChoice.value);
+    });
+  </script>
+</html>
